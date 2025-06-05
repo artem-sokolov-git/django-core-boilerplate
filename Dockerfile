@@ -1,4 +1,4 @@
-FROM python:3.12.11-slim
+FROM python:3.12.10-slim
 
 RUN apt-get update && apt-get install -y \
     build-essential \
@@ -12,6 +12,8 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /usr/local/bin/
 WORKDIR /app
 
 COPY pyproject.toml ./
+
+RUN uv add mysqlclient
 
 RUN uv lock
 
