@@ -20,7 +20,7 @@ FROM base-uv AS base-uv-psql
 RUN apt-get update && apt-get install -y libpq-dev
 RUN uv sync --extra psql --frozen
 
-FROM base-uv-psql AS base-uv-postgres-drf
+FROM base-uv-psql AS base-uv-psql-drf
 RUN uv sync --extra drf --frozen
 
 RUN rm -rf /var/lib/apt/lists/*
